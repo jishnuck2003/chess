@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Board</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        button{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: 44.4vw;
+            text-align: center;
+            margin: 10px 0;
+            padding: 10px 20px;
+            font-size: 20px;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        #board{
+            display: flex;
+            flex-wrap: wrap;
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+            background-color: whitesmoke;
+            border: 1px solid black;
+        }
+        .square {
+            width: 75px;
+            height: 75px;
+        }
+        .white {
+            background-color: white;
+        }
+        .black {
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Chess Board</h1>
+    <button id="btn">Show Board</button>
+
+    <div id=" "></div>
+    <script>
+    $(document).ready(function() {
+        // Create 64 squares
+        for(let i = 0; i < 64; i++) {
+            let square = $('<div>').addClass('square');
+            // Alternate colors based on position 
+            if((Math.floor(i/8) + i) % 2 == 0 ) {
+                square.addClass('white');
+            } else {
+                square.addClass('black');
+            }
+            $('#board').append(square);
+        }
+
+        // Toggle board visibility
+        $('#btn').click(function() {
+            $('#board').toggle();
+        });
+    });
+</script>
+</body>
+</html>
